@@ -27,14 +27,19 @@ INSTALLED_APPS = (
     'djangoappengine',
 )
 
-MIDDLEWARE_CLASSES = (
+MIDDLEWARE_CLASSES = [
     # This loads the index definitions, so it has to come first
     'autoload.middleware.AutoloadMiddleware',
 
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
-)
+]
+
+if not DEBUG:
+    # Put the stats middleware after autoload
+    MIDDLEWARE_CLASSES.insert(
+        1, 'google.appengine.ext.appstats.recording.AppStatsDjangoMiddleware')
 
 TEMPLATE_CONTEXT_PROCESSORS = (
     'django.contrib.auth.context_processors.auth',
@@ -57,3 +62,6 @@ else:
     STATIC_URL = "/static/"
 STATICFILES_DIRS = ("staticfiles", )
 STATIC_ROOT = "static_collected"
+
+LOGIN_URL = "/login"
+LOGIN_REDIRECT_URL = "/"

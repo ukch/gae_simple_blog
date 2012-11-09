@@ -1,0 +1,10 @@
+{% load url from future %}
+
+<form method="POST" action="{% url "login" %}">
+    <fieldset>
+        <legend>Please log in</legend>
+        {% csrf_token %}
+        {{ form }}<br />
+        <button type="submit" class="btn">Log in</button>
+    </fieldset>
+</form>
