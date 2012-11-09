@@ -17,9 +17,11 @@ INSTALLED_APPS = (
     'django.contrib.contenttypes',
     'django.contrib.auth',
     'django.contrib.sessions',
+    'django.contrib.staticfiles',
     'djangotoolbox',
     'autoload',
     'dbindexer',
+    "simpleblog.content",
 
     # djangoappengine should come last, so it can override a few manage.py commands
     'djangoappengine',
@@ -44,7 +46,8 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 # corresponding output. Helps a lot with print-debugging.
 TEST_RUNNER = 'djangotoolbox.test.CapturingTestSuiteRunner'
 
-ADMIN_MEDIA_PREFIX = '/media/admin/'
 TEMPLATE_DIRS = (os.path.join(os.path.dirname(__file__), 'templates'),)
 
-ROOT_URLCONF = 'urls'
+ROOT_URLCONF = 'simpleblog.urls'
+
+STATIC_URL = "/static"
