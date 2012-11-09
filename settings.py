@@ -40,6 +40,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.contrib.auth.context_processors.auth',
     'django.core.context_processors.request',
     'django.core.context_processors.media',
+    'django.core.context_processors.static',
 )
 
 # This test runner captures stdout and associates tracebacks with their
@@ -50,4 +51,9 @@ TEMPLATE_DIRS = (os.path.join(os.path.dirname(__file__), 'templates'),)
 
 ROOT_URLCONF = 'simpleblog.urls'
 
-STATIC_URL = "/static"
+if DEBUG:
+    STATIC_URL = "/devstatic/"
+else:
+    STATIC_URL = "/static/"
+STATICFILES_DIRS = ("staticfiles", )
+STATIC_ROOT = "static_collected"
