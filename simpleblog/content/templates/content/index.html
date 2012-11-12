@@ -1,4 +1,8 @@
 {% extends "base.html" %}
+
+{% load url from future %}
+{% load markup %}
+
 {% block title %}All blog posts{% endblock %}
 
 {% block content %}
@@ -8,10 +12,25 @@
 </div>
 <div class="row">
     <div class="span9">
+        {% for post in posts %}
+        <div class="post-outline">
+            <header>
+            <h3><a href="{% url "post_view" post.id post.title|slugify %}">{{ post.title }}</a></h3>
+                <small>Posted by <strong>{{ post.poster.username }}</strong> on <strong>{{ post.datetime_posted }}</strong></small>
+            </header>
+            {{ post.body|markdown }}
+        </div>
+        {% if not forloop.last %}<hr />{% endif %}
+        {% empty %}
         No posts to show.
+        {% endfor %}
     </div>
     <div class="span3">
+        {% for comment in comments %}
+        {{ comment }}
+        {% empty %}
         No comments to show.
+        {% endfor %}
     </div>
 </div>
 {% endblock %}

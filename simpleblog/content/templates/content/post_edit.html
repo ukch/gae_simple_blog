@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block title %}{% if post.id %}{{ post.title }} (editing){% else %}New post{% endif %}{% endblock %}
+
+{% block content %}
+<h1>{{ post.title }}</h1>
+<form method="POST">
+    {% csrf_token %}
+    {{ form }}<br />
+    <button type="submit" class="btn">Save</button>
+</form>
+{% endblock %}

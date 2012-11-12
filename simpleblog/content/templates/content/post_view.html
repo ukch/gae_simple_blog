@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% load url from future %}
+{% load markup %}
+
+{% block title %}{{ post.title }}{% endblock %}
+
+{% block content %}
+<header>
+<h1>{{ post.title }}</h1>
+<small>Posted by <strong>{{ post.poster.username }}</strong> on <strong>{{ post.datetime_posted }}</strong></small>
+</header>
+{{ post.body|markdown }}
+{% if user == post.poster %}
+<small>
+    <a href="{% url "post_edit" post.id %}">Edit this post</a>
+</small>
+{% endif %}
+{% endblock %}

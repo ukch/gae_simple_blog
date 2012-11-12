@@ -10,6 +10,7 @@ dbindexer
 autoload
 mediagenerator
 filetransfers
+markdown
 
 build
 static_collected

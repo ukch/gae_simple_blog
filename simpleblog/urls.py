@@ -11,4 +11,8 @@ urlpatterns = patterns('',
 )
 urlpatterns += patterns("simpleblog.content.views",
     url('^$', "index", name="index"),
+    url('^post/new/$', "post_edit", name="post_create"),
+    url('^post/(\d+)/$', "post_view"),
+    url('^post/(\d+)/(.*)/$', "post_view", name="post_view"),
+    url('^edit_post/(\d+)/$', "post_edit", name="post_edit"),
 )

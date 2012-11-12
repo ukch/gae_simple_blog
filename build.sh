@@ -9,11 +9,13 @@ unzip -q build/django-dbindexer-0.3.zip -d build
 unzip -q build/django-nonrel-1.3.1.zip -d build
 unzip -q build/djangoappengine-1.0.zip -d build
 unzip -q build/djangotoolbox-0.9.2.zip -d build
+tar -xzf build/Markdown-2.2.1.tar.gz -C build
 
 cp -r build/django-autoload/autoload ./autoload
 cp -r build/django-dbindexer/dbindexer ./dbindexer
 cp -r build/django-nonrel/django ./django
 cp -r build/djangoappengine ./djangoappengine
 cp -r build/djangotoolbox/djangotoolbox ./djangotoolbox
+cp -r build/Markdown-2.2.1/markdown ./markdown
 
 rm -r ./djangoappengine/djangoappengine.egg-info
