@@ -15,4 +15,5 @@ urlpatterns += patterns("simpleblog.content.views",
     url('^post/(\d+)/$', "post_view"),
     url('^post/(\d+)/(.*)/$', "post_view", name="post_view"),
     url('^edit_post/(\d+)/$', "post_edit", name="post_edit"),
+    url('^new_comment/(\d+)/$', "comment_create", name="comment_create"),
 )

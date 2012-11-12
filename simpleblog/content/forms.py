@@ -3,7 +3,7 @@ import datetime
 from django import forms
 from django.core import validators
 
-from .models import Post
+from .models import Post, Comment
 
 
 class PostForm(forms.ModelForm):
@@ -23,3 +23,14 @@ class PostForm(forms.ModelForm):
     class Meta:
         model = Post
         fields = ("title", "body", "datetime_posted")
+
+
+class CommentForm(forms.ModelForm):
+
+    def __init__(self, *args, **kwargs):
+        super(CommentForm, self).__init__(*args, **kwargs)
+        self.fields["body"].widget.attrs["class"] = "input-xxlarge"
+
+    class Meta:
+        model = Comment
+        fields = ("body", )

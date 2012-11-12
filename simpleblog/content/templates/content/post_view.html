@@ -16,4 +16,16 @@
     <a href="{% url "post_edit" post.id %}">Edit this post</a>
 </small>
 {% endif %}
+<a id="comments"></a>
+{% if post.comments %}
+<h3>Comments</h3>
+{% for comment in post.comments.all %}
+<blockquote style="margin: 20px 0 0 0">
+{{ comment.body|markdown }}
+</blockquote>
+<small>Posted by <strong>{% if comment.poster %}{{ comment.poster.username }}{% else %}anonymous{% endif %}</strong> on <strong>{{ comment.datetime_posted }}</strong></small>
+{% endfor %}
+{% endif %}
+<h3>Add New Comment</h3>
+{% include "content/comment_form.html" %}
 {% endblock %}

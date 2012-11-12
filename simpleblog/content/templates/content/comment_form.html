@@ -1,0 +1,7 @@
+{% load url from future %}
+
+<form method="POST" action="{% url "comment_create" post.id %}">
+    {% csrf_token %}
+    {{ comment_form }}<br />
+    <button type="submit" class="btn">Add Comment</button>
+</form>

@@ -5,7 +5,7 @@ from django.contrib.auth.models import User
 
 class Postable(models.Model):
 
-    poster = models.ForeignKey(User)
+    poster = models.ForeignKey(User, null=True)
     body = models.TextField(verbose_name="Body (Markdown-formatted)")
     datetime_posted = models.DateTimeField(
         verbose_name="Date/Time posted (blank to use the current date/time)")
