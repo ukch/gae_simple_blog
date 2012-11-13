@@ -62,6 +62,7 @@ else:
     STATIC_URL = "/static/"
 STATICFILES_DIRS = ("staticfiles", )
 STATIC_ROOT = "static_collected"
+PRE_DEPLOY_COMMANDS = ("collectstatic", )
 
 LOGIN_URL = "/login"
 LOGIN_REDIRECT_URL = "/"
