@@ -2,6 +2,7 @@
 *.pyc
 .gaedata
 
+private_settings.py
 django
 djangotoolbox
 djangoappengine
